@@ -21,8 +21,9 @@ class DashboardController extends Controller
             $airlines = Airline::all();
             return view('admin.dashboard', compact('scheduleCount', 'passengerCount', 'airlines', 'bookingCount'));
         } elseif ($role === 'passenger') {
-            $schedules = Schedule::all();
-            return view('passenger.dashboard', compact('schedules'));
+            $schedules = Schedule::where('departure_time', '>=', now())->paginate(5);
+            $bookings = Booking::where('user_id', auth()->id())->get();
+            return view('passenger.dashboard', compact('schedules', 'bookings'));
         }
     }
 }

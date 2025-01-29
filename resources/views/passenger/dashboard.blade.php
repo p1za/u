@@ -68,20 +68,20 @@
                             <thead class="table-dark">
                                 <tr>
                                     <th>#</th>
+                                    <th>Kode Booking</th>
                                     <th>Maskapai</th>
-                                    <th>Pesawat</th>
                                     <th>Kota Asal</th>
                                     <th>Kota Tujuan</th>
                                     <th>Waktu Berangkat</th>
                                     <th>Waktu Tiba</th>
                                 </tr>
                             </thead>
-                            {{-- <tbody>
+                            <tbody>
                                 @forelse ($bookings as $booking)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $booking->booking_code }}</td>
                                         <td>{{ $booking->schedule->plane->airline->airline_name }}</td>
-                                        <td>{{ $booking->schedule->plane->plane_name }}</td>
                                         <td>{{ $booking->schedule->departureCity->nama_kota }}</td>
                                         <td>{{ $booking->schedule->arrivalCity->nama_kota }}</td>
                                         <td>{{ $booking->schedule->departure_time }}</td>
@@ -92,7 +92,7 @@
                                         <td colspan="7" class="text-center">Tidak ada data</td>
                                     </tr>
                                 @endforelse
-                            </tbody> --}}
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -160,6 +160,8 @@
                                 </div>
                             </div>
                         @endforelse
+
+                        {{ $schedules->links() }}
                     </div>
                 </div>
             </div>
