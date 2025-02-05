@@ -101,7 +101,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
                                                         </div>
-                                                        <form action="{{ route('payments.update', $payment->id) }}" method="POST">
+                                                        <form action="{{ route('payments.update', $payment->id) }}" method="POST" enctype="multipart/form-data">
                                                             <div class="modal-body">
                                                                 @csrf
                                                                 @method('PUT')
